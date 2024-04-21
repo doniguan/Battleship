@@ -1,0 +1,96 @@
+h2 {
+    text-align: center;
+}
+
+.separator {
+    width: 100%;
+    border: 1px solid;
+}
+
+.playerTable {
+    width: 30%;
+    text-align: left;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    font-family: 'Arial';
+    font-size: 40px;
+    line-height: 70px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid #333;
+    outline: 1px solid #333;
+    cursor: pointer;
+}
+
+.letterCell {
+        width: 50px;
+            height: 50px;
+            font-family: 'Arial';
+            font-size: 25px;
+            line-height: 50px;
+            text-align: center;
+            text-transform: uppercase;
+}
+
+.numberCell {
+    width: 50px;
+    height: 50px;
+    font-family: 'Arial';
+    font-size: 25px;
+    line-height: 50px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+table {
+    margin: 0 auto;
+}
+
+#win_message {
+    display: none;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 40px;
+}
+
+#win_message .againBtn {
+    font-weight: bold;
+    cursor: pointer;
+    color: #369;
+    border-bottom: 1px solid #369;
+}
+
+#win_message .againBtn:hover {
+    border-color: transparent;
+
+}
+
+#field {
+    position: relative;
+}
+
+#field .table {
+    display: table;
+
+    margin: 0 auto;
+    position: relative;
+}
+
+#field table tr:first-child div {
+    margin-top: 0;
+}
+
+#field table tr:last-child div {
+    margin-bottom: 0;
+}
+
+#field table tr td:first-child div {
+    margin-left: 0;
+}
+
+#field table tr td:last-child div {
+    margin-right: 0;
+}
