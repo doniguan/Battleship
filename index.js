@@ -8,6 +8,12 @@ let computerCells = []
 let computerCoordinates = []
 let playerCoordinates = []
 
+class Ship {
+  size
+  player
+  coordinates = []
+}
+
 let firstMoveIsHuman = false
 
 let shipIcon = 'O'
@@ -16,9 +22,19 @@ let missIcon = '·'
 
 shipsCheck = 0
 
+playerOneDeck = 0
+playerTwoDeck = 0
+playerThreeDeck = 0
+playerFourDeck = 0
+
+computerOneDeck = 0
+computerTwoDeck = 0
+computerThreeDeck = 0
+computerFourDeck = 0
+
 onload = function () {
-  playerCells = document.getElementsByClassName('playerCell')
-  computerCells = document.getElementsByClassName('computerCell')
+  playerCells = document.getElementsByClassName("playerCell")
+  computerCells = document.getElementsByClassName("computerCell")
 
   const random = randomNum(1)
   if (random === 1) {
@@ -137,100 +153,119 @@ shipPlacing = function (table, size) {
     }
   }
 
+  let ship = new Ship()
+  ship.size = size
+
   for (let j = 0; j < size; j++) {
-    if (table === playerCoordinates) {
-      playerCoordinates.push(i + j * mult)
-    } else {
-      computerCoordinates.push(i + j * mult)
-    }
+    table.push(i + j * mult)
+    ship.coordinates.push(i + j * mult)
   }
+  if (table === playerCoordinates) {
+    ship.player = true
+  } else {
+    ship.player = false
+  }
+  console.log(ship)
 
   shipsCheck++
   return true
 }
 
 checkShipsNear = function (table, random) {
+  let cellsToCheck = []
   if (random === 0) {
-    return (
-      table.includes(random + 1) ||
-      table.includes(random + 10) ||
-      table.includes(random + 11)
-    )
+    cellsToCheck = [random + 1, random + 10, random + 11]
+    return cellsToCheck.some((cell) => {
+      return table.includes(cell)
+    })
   }
 
   if (random === 9) {
-    return (
-      table.includes(random - 1) ||
-      table.includes(random + 10) ||
-      table.includes(random + 9)
-    )
+    cellsToCheck = [random - 1, random + 10, random + 9]
+    return cellsToCheck.some((cell) => {
+      return table.includes(cell)
+    })
   }
 
   if (random === 90) {
-    return (
-      table.includes(random + 1) ||
-      table.includes(random - 10) ||
-      table.includes(random - 9)
-    )
+    cellsToCheck = [random + 1, random - 10, random - 9]
+    return cellsToCheck.some((cell) => {
+      return table.includes(cell)
+    })
   }
 
   if (random === 99) {
-    return (
-      table.includes(random - 1) ||
-      table.includes(random - 10) ||
-      table.includes(random - 11)
-    )
+    cellsToCheck = [random - 1, random - 10, random - 11]
+    return cellsToCheck.some((cell) => {
+      return table.includes(cell)
+    })
   }
 
   if (random > 0 && random < 9) {
-    return (
-      table.includes(random - 1) ||
-      table.includes(random + 1) ||
-      table.includes(random + 9) ||
-      table.includes(random + 10) ||
-      table.includes(random + 11)
-    )
+    cellsToCheck = [
+      random + 1,
+      random + 10,
+      random + 11,
+      random - 1,
+      random + 9,
+    ]
+    return cellsToCheck.some((cell) => {
+      return table.includes(cell)
+    })
   }
 
   if (random > 90 && random < 99) {
-    return (
-      table.includes(random - 1) ||
-      table.includes(random + 1) ||
-      table.includes(random - 9) ||
-      table.includes(random - 10) ||
-      table.includes(random - 11)
-    )
+    cellsToCheck = [
+      random + 1,
+      random - 10,
+      random - 11,
+      random - 1,
+      random - 9,
+    ]
+    return cellsToCheck.some((cell) => {
+      return table.includes(cell)
+    })
   }
 
   if (random % 10 === 0 && random !== 0 && random !== 90) {
-    return (
-      table.includes(random - 10) ||
-      table.includes(random - 9) ||
-      table.includes(random + 1) ||
-      table.includes(random + 10) ||
-      table.includes(random + 11)
-    )
+    cellsToCheck = [
+      random + 1,
+      random + 10,
+      random + 11,
+      random - 10,
+      random - 9,
+    ]
+    return cellsToCheck.some((cell) => {
+      return table.includes(cell)
+    })
   }
 
   if ((random + 1) % 10 === 0 && random !== 9 && random !== 99) {
-    return (
-      table.includes(random - 10) ||
-      table.includes(random - 11) ||
-      table.includes(random - 1) ||
-      table.includes(random + 10) ||
-      table.includes(random + 9)
-    )
+    cellsToCheck = [
+      random - 11,
+      random - 10,
+      random + 11,
+      random - 1,
+      random + 9,
+    ]
+    return cellsToCheck.some((cell) => {
+      return table.includes(cell)
+    })
   }
-  return (
-    table.includes(random - 11) ||
-    table.includes(random - 10) ||
-    table.includes(random - 9) ||
-    table.includes(random - 1) ||
-    table.includes(random + 1) ||
-    table.includes(random + 9) ||
-    table.includes(random + 10) ||
-    table.includes(random + 11)
-  )
+
+  cellsToCheck = [
+    random + 1,
+    random + 10,
+    random + 11,
+    random - 1,
+    random + 9,
+    random - 9,
+    random - 10,
+    random - 11,
+  ]
+  return cellsToCheck.some((cell) => {
+    return table.includes(cell)
+  })
 }
 
 createShipCell = function (table, coordinates, i) {
@@ -250,7 +285,7 @@ createMissCell = function (item) {
 }
 
 randomNum = function (max) {
-  return Math.round(Math.random() * max);
+  return Math.round(Math.random() * max)
 }
 
 // winnerChk = function (item) {
