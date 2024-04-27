@@ -8,12 +8,6 @@ h2 {
     border: 1px solid;
 }
 
-.invicibleTable {
-    display: none;
-    width: 30%;
-    text-align: left;
-}
-
 .playerTable {
     width: 30%;
     text-align: left;
