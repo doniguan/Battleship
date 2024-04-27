@@ -22,19 +22,39 @@ let missIcon = '·'
 
 shipsCheck = 0
 
-playerOneDeck = 0
-playerTwoDeck = 0
-playerThreeDeck = 0
-playerFourDeck = 0
+let playerOneDeckCounter = 0
+let playerTwoDeckCounter = 0
+let playerThreeDeckCounter = 0
+let playerFourDeckCounter = 0
 
-computerOneDeck = 0
-computerTwoDeck = 0
-computerThreeDeck = 0
-computerFourDeck = 0
+let computerOneDeckCounter = 0
+let computerTwoDeckCounter = 0
+let computerThreeDeckCounter = 0
+let computerFourDeckCounter = 0
+
+let player4DeckCell
+let player3DeckCell
+let player2DeckCell
+let player1DeckCell
+
+let computer4DeckCell
+let computer3DeckCell
+let computer2DeckCell
+let computer1DeckCell
 
 onload = function () {
-  playerCells = document.getElementsByClassName("playerCell")
-  computerCells = document.getElementsByClassName("computerCell")
+  playerCells = document.getElementsByClassName('playerCell')
+  computerCells = document.getElementsByClassName('computerCell')
+
+player4DeckCell = document.getElementById('player4Deck')
+player3DeckCell = document.getElementById('player3Deck')
+player2DeckCell = document.getElementById('player2Deck')
+player1DeckCell = document.getElementById('player1Deck')
+
+computer4DeckCell = document.getElementById('computer4Deck')
+computer3DeckCell = document.getElementById('computer3Deck')
+computer2DeckCell = document.getElementById('computer2Deck')
+computer1DeckCell = document.getElementById('computer1Deck')
 
   const random = randomNum(1)
   if (random === 1) {
@@ -45,7 +65,7 @@ onload = function () {
   shipsPlacing(computerCoordinates)
 
   for (let i = 0; i < computerCells.length; i++) {
-    computerCells[i].addEventListener("click", function () {
+    computerCells[i].addEventListener('click', function () {
       humanMove(this, i)
     })
   }
@@ -153,6 +173,8 @@ shipPlacing = function (table, size) {
     }
   }
 
+  shipCounter(table, size)
+
   let ship = new Ship()
   ship.size = size
 
@@ -165,10 +187,39 @@ shipPlacing = function (table, size) {
   } else {
     ship.player = false
   }
-  console.log(ship)
 
   shipsCheck++
   return true
+}
+
+shipCounter = function(table, size) {
+  if (table === playerCoordinates) {
+    if (size === 4) {
+      playerFourDeckCounter++
+    }
+    if (size === 3) {
+      playerThreeDeckCounter++
+    }
+    if (size === 2) {
+      playerTwoDeckCounter++
+    }
+    if (size === 1) {
+      playerOneDeckCounter++
+    }
+  } else {
+    if (size === 4) {
+      computerFourDeckCounter++
+    }
+    if (size === 3) {
+      computerThreeDeckCounter++
+    }
+    if (size === 2) {
+      computerTwoDeckCounter++
+    }
+    if (size === 1) {
+      computerOneDeckCounter++
+    }
+  }
 }
 
 checkShipsNear = function (table, random) {
