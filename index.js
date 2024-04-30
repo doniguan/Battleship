@@ -1,5 +1,3 @@
-//последняя клетка не нажимается
-//счётчик кораблей
 //определение победы и вывод сообщения
 //координаты рядом с подстреленными кораблями
 
@@ -90,7 +88,7 @@ humanMove = function (item, i) {
     return false
   }
   if (computerCoordinates.includes(i)) {
-    createHitCell(item)
+    createHitCell(computerCoordinates, item, i)
     return true
   } else {
     createMissCell(item)
@@ -106,7 +104,7 @@ computerMove = function (table) {
       return false
     } else {
       if (table[random].innerHTML === shipIcon) {
-        createHitCell(table[random])
+        createHitCell(table, table[random], random)
       }
     }
   }
@@ -329,15 +327,33 @@ checkShipsNear = function (table, random) {
   })
 }
 
+shipCounterCheck = function (table, coord) {
+  let deckCount = 0
+  
+  while (true) {
+    if ((table[coord + 1] !== -1) && (!table.includes(coord + 1))) {
+    }
+    if ((table[coord - 1] !== -1) && (!table.includes(coord - 1))) {
+    }
+    if ((table[coord + 10] !== -1) && (!table.includes(coord + 10))) {
+    }
+    if ((table[coord - 10] !== -1) && (!table.includes(coord - 10))) {
+    }
+    deckCount++
+    return false
+  }
+}
+
 createShipCell = function (table, coordinates, i) {
   table[coordinates[i]].innerHTML = shipIcon
   table[coordinates[i]].style.outline = '3px dotted'
 }
 
-createHitCell = function (item) {
+createHitCell = function (table, item, coord) {
   item.innerHTML = hitIcon
   item.style.outline = '3px dotted'
   item.style.backgroundColor = '#FA8072'
+  shipCounterCheck(table, coord)
 }
 
 createMissCell = function (item) {
