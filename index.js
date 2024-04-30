@@ -46,15 +46,15 @@ onload = function () {
   playerCells = document.getElementsByClassName('playerCell')
   computerCells = document.getElementsByClassName('computerCell')
 
-player4DeckCell = document.getElementById('player4Deck')
-player3DeckCell = document.getElementById('player3Deck')
-player2DeckCell = document.getElementById('player2Deck')
-player1DeckCell = document.getElementById('player1Deck')
+  player4DeckCell = document.getElementById('player4Deck')
+  player3DeckCell = document.getElementById('player3Deck')
+  player2DeckCell = document.getElementById('player2Deck')
+  player1DeckCell = document.getElementById('player1Deck')
 
-computer4DeckCell = document.getElementById('computer4Deck')
-computer3DeckCell = document.getElementById('computer3Deck')
-computer2DeckCell = document.getElementById('computer2Deck')
-computer1DeckCell = document.getElementById('computer1Deck')
+  computer4DeckCell = document.getElementById('computer4Deck')
+  computer3DeckCell = document.getElementById('computer3Deck')
+  computer2DeckCell = document.getElementById('computer2Deck')
+  computer1DeckCell = document.getElementById('computer1Deck')
 
   const random = randomNum(1)
   if (random === 1) {
@@ -63,6 +63,16 @@ computer1DeckCell = document.getElementById('computer1Deck')
 
   shipsPlacing(playerCoordinates)
   shipsPlacing(computerCoordinates)
+
+  player4DeckCell.innerHTML = playerFourDeckCounter
+  player3DeckCell.innerHTML = playerThreeDeckCounter
+  player2DeckCell.innerHTML = playerTwoDeckCounter
+  player1DeckCell.innerHTML = playerOneDeckCounter
+
+  computer4DeckCell.innerHTML = computerFourDeckCounter
+  computer3DeckCell.innerHTML = computerThreeDeckCounter
+  computer2DeckCell.innerHTML = computerTwoDeckCounter
+  computer1DeckCell.innerHTML = computerOneDeckCounter
 
   for (let i = 0; i < computerCells.length; i++) {
     computerCells[i].addEventListener('click', function () {
