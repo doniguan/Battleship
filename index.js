@@ -1,10 +1,11 @@
 //определение победы и вывод сообщения
-//координаты рядом с подстреленными кораблями
 
 let playerCells = []
 let computerCells = []
 let computerCoordinates = []
 let playerCoordinates = []
+let playerShipsList = []
+let computerShipsList = []
 
 class Ship {
   size
@@ -192,8 +193,10 @@ shipPlacing = function (table, size) {
   }
   if (table === playerCoordinates) {
     ship.player = true
+    playerShipsList.push(ship)
   } else {
     ship.player = false
+    computerShipsList.push(ship)
   }
 
   shipsCheck++
@@ -327,21 +330,7 @@ checkShipsNear = function (table, random) {
   })
 }
 
-shipCounterCheck = function (table, coord) {
-  let deckCount = 0
-  
-  while (true) {
-    if ((table[coord + 1] !== -1) && (!table.includes(coord + 1))) {
-    }
-    if ((table[coord - 1] !== -1) && (!table.includes(coord - 1))) {
-    }
-    if ((table[coord + 10] !== -1) && (!table.includes(coord + 10))) {
-    }
-    if ((table[coord - 10] !== -1) && (!table.includes(coord - 10))) {
-    }
-    deckCount++
-    return false
-  }
+killShipCheck = function (table, coord) {
 }
 
 createShipCell = function (table, coordinates, i) {
@@ -353,7 +342,8 @@ createHitCell = function (table, item, coord) {
   item.innerHTML = hitIcon
   item.style.outline = '3px dotted'
   item.style.backgroundColor = '#FA8072'
-  shipCounterCheck(table, coord)
+  killShipCheck(table, coord)
+
 }
 
 createMissCell = function (item) {
