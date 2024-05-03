@@ -11,6 +11,7 @@ class Ship {
   size
   player
   coordinates = []
+  doubleCoordinates = []
 }
 
 let firstMoveIsHuman = false
@@ -190,6 +191,7 @@ shipPlacing = function (table, size) {
   for (let j = 0; j < size; j++) {
     table.push(i + j * mult)
     ship.coordinates.push(i + j * mult)
+    ship.doubleCoordinates.push(i + j * mult)
   }
   if (table === playerCoordinates) {
     ship.player = true
@@ -331,6 +333,33 @@ checkShipsNear = function (table, random) {
 }
 
 killShipCheck = function (table, coord) {
+  let index
+  let shipToCheck
+  if (table === playerCells) {
+    for (let i = 0; i < playerShipsList.length; i++) {
+      index = playerShipsList[i].coordinates.indexOf(coord)
+      if (index !== -1) {
+        shipToCheck = playerShipsList[i]
+        playerShipsList[i].coordinates = playerShipsList[i].coordinates.filter((coordinate) => coordinate !== coord)
+      }
+    }
+  } else {
+    for (let i = 0; i < computerShipsList.length; i++) {
+      index = computerShipsList[i].coordinates.indexOf(coord)
+      if (index !== -1) {
+        shipToCheck = computerShipsList[i]
+        computerShipsList[i].coordinates = computerShipsList[i].coordinates.filter((coordinate) => coordinate !== coord)
+      }
+    }
+  }
+  if (shipToCheck.coordinates.length === 0) {
+    missCellsAfterShipKilling(table, shipToCheck)
+  }
+}
+
+missCellsAfterShipKilling = function (table, shipToCheck) {
+  for (let i = 0; i < shipToCheck.doubleCoordinates.length; i++) {
+  }
 }
 
 createShipCell = function (table, coordinates, i) {
@@ -343,7 +372,6 @@ createHitCell = function (table, item, coord) {
   item.style.outline = '3px dotted'
   item.style.backgroundColor = '#FA8072'
   killShipCheck(table, coord)
-
 }
 
 createMissCell = function (item) {
