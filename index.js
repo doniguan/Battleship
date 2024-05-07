@@ -360,25 +360,115 @@ killShipCheck = function (table, coord) {
 missCellsAfterShipKilling = function (table, shipToCheck) {
   for (let i = 0; i < shipToCheck.doubleCoordinates.length; i++) {
     if (shipToCheck.doubleCoordinates[i] === 0) {
-      if (((table[i] + 1).innerHTML = '')) {
-        createMissCell(table[i])
+      if (((table[i + 1]).innerHTML = '')) {
+        createMissCell(table[i + 1])
       }
-      if (((table[i] + 10).innerHTML = '')) {
-       createMissCell(table[i])
+      if (((table[i + 10]).innerHTML = '')) {
+       createMissCell(table[i + 10])
       }
-      if (((table[i] + 11).innerHTML = '')) {
-       createMissCell(table[i])
+      if (((table[i + 11]).innerHTML = '')) {
+       createMissCell(table[i + 11])
       }
     }
     if (shipToCheck.doubleCoordinates[i] === 9) {
-      if (((table[i] - 1).innerHTML = '')) {
-        createMissCell(table[i])
+      if (((table[i - 1]).innerHTML = '')) {
+        createMissCell(table[i - 1])
       }
-      if (((table[i] + 9).innerHTML = '')) {
-        createMissCell(table[i])
+      if (((table[i + 9]).innerHTML = '')) {
+        createMissCell(table[i + 9])
       }
-      if (((table[i] + 10).innerHTML = '')) {
-        createMissCell(table[i])
+      if (((table[i + 10]).innerHTML = '')) {
+        createMissCell(table[i + 10])
+      }
+    }
+    if (shipToCheck.doubleCoordinates[i] === 90) {
+      if (((table[i - 10]).innerHTML = '')) {
+        createMissCell(table[i - 10])
+      }
+      if (((table[i - 9]).innerHTML = '')) {
+        createMissCell(table[i - 9])
+      }
+      if (((table[i + 1]).innerHTML = '')) {
+        createMissCell(table[i + 1])
+      }
+    }
+    if (shipToCheck.doubleCoordinates[i] === 99) {
+      if (((table[i - 1]).innerHTML = '')) {
+        createMissCell(table[i - 1])
+      }
+      if (((table[i - 10]).innerHTML = '')) {
+        createMissCell(table[i - 10])
+      }
+      if (((table[i - 11]).innerHTML = '')) {
+        createMissCell(table[i - 11])
+      }
+    }
+    if (shipToCheck.doubleCoordinates[i] > 0 && shipToCheck.doubleCoordinates[i] < 9) {
+      if (((table[i - 1]).innerHTML = '')) {
+        createMissCell(table[i - 1])
+      }
+      if (((table[i + 9]).innerHTML = '')) {
+        createMissCell(table[i + 9])
+      }
+      if (((table[i + 10]).innerHTML = '')) {
+        createMissCell(table[i + 10])
+      }
+      if (((table[i + 11]).innerHTML = '')) {
+        createMissCell(table[i + 11])
+      }
+      if (((table[i + 1]).innerHTML = '')) {
+        createMissCell(table[i + 1])
+      }
+    }
+    if (shipToCheck.doubleCoordinates[i] > 90 && shipToCheck.doubleCoordinates[i] < 99) {
+      if (((table[i - 1]).innerHTML = '')) {
+        createMissCell(table[i - 1])
+      }
+      if (((table[i - 9]).innerHTML = '')) {
+        createMissCell(table[i - 9])
+      }
+      if (((table[i - 10]).innerHTML = '')) {
+        createMissCell(table[i - 10])
+      }
+      if (((table[i - 11]).innerHTML = '')) {
+        createMissCell(table[i - 11])
+      }
+      if (((table[i + 1]).innerHTML = '')) {
+        createMissCell(table[i + 1])
+      }
+    }
+    if (shipToCheck.doubleCoordinates[i] % 10 === 0 && shipToCheck.doubleCoordinates[i] !== 0 && shipToCheck.doubleCoordinates[i] !== 90) {
+      if (((table[i - 10]).innerHTML = '')) {
+        createMissCell(table[i - 10])
+      }
+      if (((table[i - 9]).innerHTML = '')) {
+        createMissCell(table[i - 9])
+      }
+      if (((table[i + 1]).innerHTML = '')) {
+        createMissCell(table[i + 1])
+      }
+      if (((table[i + 10]).innerHTML = '')) {
+        createMissCell(table[i + 10])
+      }
+      if (((table[i + 11]).innerHTML = '')) {
+        createMissCell(table[i + 11])
+      }
+    }
+    if (shipToCheck.doubleCoordinates[i + 1] % 10 === 0 && shipToCheck.doubleCoordinates[i] !== 9 && shipToCheck.doubleCoordinates[i] !== 99) {
+      if (((table[i - 10]).innerHTML = '')) {
+        createMissCell(table[i - 10])
+      }
+      if (((table[i - 11]).innerHTML = '')) {
+        createMissCell(table[i - 11])
+      }
+      if (((table[i - 1]).innerHTML = '')) {
+        createMissCell(table[i - 1])
+      }
+      if (((table[i + 10]).innerHTML = '')) {
+        createMissCell(table[i + 10])
+      }
+      if (((table[i + 9]).innerHTML = '')) {
+        createMissCell(table[i + 9])
       }
     }
   }
