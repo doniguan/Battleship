@@ -1,5 +1,3 @@
-//определение победы и вывод сообщения
-
 let playerCells = []
 let computerCells = []
 let computerCoordinates = []
@@ -207,30 +205,18 @@ shipPlacing = function (table, size) {
 
 shipCounter = function(table, size) {
   if (table === playerCoordinates) {
-    if (size === 4) {
-      playerFourDeckCounter++
-    }
-    if (size === 3) {
-      playerThreeDeckCounter++
-    }
-    if (size === 2) {
-      playerTwoDeckCounter++
-    }
-    if (size === 1) {
-      playerOneDeckCounter++
+    switch (size) {
+      case 4: playerFourDeckCounter++
+      case 3: playerThreeDeckCounter++
+      case 2: playerTwoDeckCounter++
+      case 1: playerOneDeckCounter++
     }
   } else {
-    if (size === 4) {
-      computerFourDeckCounter++
-    }
-    if (size === 3) {
-      computerThreeDeckCounter++
-    }
-    if (size === 2) {
-      computerTwoDeckCounter++
-    }
-    if (size === 1) {
-      computerOneDeckCounter++
+    switch (size) {
+      case 4: computerFourDeckCounter++
+      case 3: computerThreeDeckCounter++
+      case 2: computerTwoDeckCounter++
+      case 1: computerOneDeckCounter++
     }
   }
 }
