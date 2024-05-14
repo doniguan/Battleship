@@ -339,123 +339,127 @@ killShipCheck = function (table, coord) {
     }
   }
   if (shipToCheck.coordinates.length === 0) {
-    missCellsAfterShipKilling(table, shipToCheck)
+    if (table === playerCells) {
+      missCellsAfterShipKilling(playerCells, shipToCheck)
+    } else {
+      missCellsAfterShipKilling(computerCells, shipToCheck)
+    }
   }
 }
 
 missCellsAfterShipKilling = function (table, shipToCheck) {
   for (let i = 0; i < shipToCheck.doubleCoordinates.length; i++) {
-    console.log(shipToCheck.doubleCoordinates)
-    console.log((shipToCheck.doubleCoordinates[i] + 1).innerHTML)
     if (shipToCheck.doubleCoordinates[i] === 0) {
-      if (((table[shipToCheck.doubleCoordinates[i] + 1]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 1]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 1])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 10]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 10]).innerHTML === '')) {
        createMissCell(table[shipToCheck.doubleCoordinates[i] + 10])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 11]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 11]).innerHTML === '')) {
        createMissCell(table[shipToCheck.doubleCoordinates[i] + 11])
       }
+      break
     }
     if (shipToCheck.doubleCoordinates[i] === 9) {
-      if (((table[shipToCheck.doubleCoordinates[i] - 1]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 1]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 1])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 9]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 9]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 9])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 10]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 10]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 10])
       }
+      break
     }
     if (shipToCheck.doubleCoordinates[i] === 90) {
-      if (((table[shipToCheck.doubleCoordinates[i] - 10]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 10]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 10])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] - 9]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 9]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 9])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 1]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 1]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 1])
       }
     }
     if (shipToCheck.doubleCoordinates[i] === 99) {
-      if (((table[shipToCheck.doubleCoordinates[i] - 1]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 1]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 1])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] - 10]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 10]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 10])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] - 11]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 11]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 11])
       }
     }
     if (shipToCheck.doubleCoordinates[i] > 0 && shipToCheck.doubleCoordinates[i] < 9) {
-      if (((table[shipToCheck.doubleCoordinates[i] - 1]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 1]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 1])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 9]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 9]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 9])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 10]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 10]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 10])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 11]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 11]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 11])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 1]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 1]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 1])
       }
     }
     if (shipToCheck.doubleCoordinates[i] > 90 && shipToCheck.doubleCoordinates[i] < 99) {
-      if (((table[shipToCheck.doubleCoordinates[i] - 1]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 1]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 1])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] - 9]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 9]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 9])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] - 10]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 10]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 10])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] - 11]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 11]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 11])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 1]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 1]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 1])
       }
     }
     if (shipToCheck.doubleCoordinates[i] % 10 === 0 && shipToCheck.doubleCoordinates[i] !== 0 && shipToCheck.doubleCoordinates[i] !== 90) {
-      if (((table[shipToCheck.doubleCoordinates[i] - 10]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 10]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 10])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] - 9]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 9]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 9])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 1]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 1]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 1])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 10]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 10]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 10])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 11]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 11]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 11])
       }
     }
-    if (shipToCheck.doubleCoordinates[i + 1] % 10 === 0 && shipToCheck.doubleCoordinates[i] !== 9 && shipToCheck.doubleCoordinates[i] !== 99) {
-      if (((table[shipToCheck.doubleCoordinates[i] - 10]).innerHTML = '')) {
+    if ((shipToCheck.doubleCoordinates[i] + 1) % 10 === 0 && shipToCheck.doubleCoordinates[i] !== 9 && shipToCheck.doubleCoordinates[i] !== 99) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 10]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 10])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] - 11]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 11]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 11])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] - 1]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] - 1]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] - 1])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 10]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 10]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 10])
       }
-      if (((table[shipToCheck.doubleCoordinates[i] + 9]).innerHTML = '')) {
+      if (((table[shipToCheck.doubleCoordinates[i] + 9]).innerHTML === '')) {
         createMissCell(table[shipToCheck.doubleCoordinates[i] + 9])
       }
     }
