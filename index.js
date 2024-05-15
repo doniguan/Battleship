@@ -5,6 +5,8 @@ let playerCoordinates = []
 let playerShipsList = []
 let computerShipsList = []
 
+let resultMessage
+
 class Ship {
   size
   player
@@ -53,6 +55,8 @@ onload = function () {
   computer3DeckCell = document.getElementById('computer3Deck')
   computer2DeckCell = document.getElementById('computer2Deck')
   computer1DeckCell = document.getElementById('computer1Deck')
+
+  resultMessage = this.document.getElementById('win_message')
 
   const random = randomNum(1)
   if (random === 1) {
@@ -385,6 +389,7 @@ killShipCheck = function (table, coord) {
         }
       }
       missCellsAfterShipKilling(playerCells, shipToCheck)
+      winnerChk()
     } else {
       switch (shipToCheck.doubleCoordinates.length) {
         case 1: {
@@ -409,6 +414,7 @@ killShipCheck = function (table, coord) {
         }
       }
       missCellsAfterShipKilling(computerCells, shipToCheck)
+      winnerChk()
     }
   }
 }
@@ -518,22 +524,24 @@ randomNum = function (max) {
   return Math.round(Math.random() * max)
 }
 
-// winnerChk = function (item) {
-//   if (item.innerHTML === humanIcon) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
+winnerChk = function () {
+  if (playerFourDeckCounter === 0 && playerThreeDeckCounter === 0 && playerTwoDeckCounter === 0 && playerOneDeckCounter === 0) {
+    resultMessage.innerHTML = 'You lost.'
+    resultMessage.style.color = 'green'
+    winShowing()
+  }
+  if (computerFourDeckCounter === 0 && computerThreeDeckCounter === 0 && computerTwoDeckCounter === 0 && computerOneDeckCounter === 0) {
+    resultMessage.innerHTML = 'You won!'
+    resultMessage.style.color = 'red'
+    winShowing()
+  }
+}
 
-// winShowing = function () {
-//   resultMessage.style.display = "block";
-
-//   if (winnerIsHuman) {
-//     resultMessage.innerHTML = "Ð’Ñ‹ Ð²Ñ‹Ð¸Ð³Ñ€Ð°Ð»Ð¸!";
-//     resultMessage.style.color = "green";
-//   } else {
-//     resultMessage.innerHTML = "Ð’Ñ‹ Ð¿Ñ€Ð¾Ð¸Ð³Ñ€Ð°Ð»Ð¸.";
-//     resultMessage.style.color = "red";
-//   }
-// };
+winShowing = function () {
+  resultMessage.style.display = 'block'
+  for (let i = 0; i < computerCells.length; i++) {
+    computerCells[i].removeEventListener('click', function () {
+      humanMove(this, i)
+    })
+  }
+}
