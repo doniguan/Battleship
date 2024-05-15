@@ -205,17 +205,40 @@ shipPlacing = function (table, size) {
 shipCounter = function(table, size) {
   if (table === playerCoordinates) {
     switch (size) {
-      case 4: playerFourDeckCounter++
-      case 3: playerThreeDeckCounter++
-      case 2: playerTwoDeckCounter++
-      case 1: playerOneDeckCounter++
+      case 4: {
+        playerFourDeckCounter++
+        break}
+      case 3: {
+        playerThreeDeckCounter++
+        break
+      }
+      case 2: {
+        playerTwoDeckCounter++
+        break
+      }
+      case 1: {
+        playerOneDeckCounter++
+        break
+      }
     }
   } else {
     switch (size) {
-      case 4: computerFourDeckCounter++
-      case 3: computerThreeDeckCounter++
-      case 2: computerTwoDeckCounter++
-      case 1: computerOneDeckCounter++
+      case 4: {
+        computerFourDeckCounter++
+        break
+      }
+      case 3: {
+        computerThreeDeckCounter++
+        break
+      }
+      case 2: {
+        computerTwoDeckCounter++
+        break
+      }
+      case 1: {
+        computerOneDeckCounter++
+        break
+      }
     }
   }
 }
@@ -339,8 +362,52 @@ killShipCheck = function (table, coord) {
   }
   if (shipToCheck.coordinates.length === 0) {
     if (table === playerCells) {
+      switch (shipToCheck.doubleCoordinates.length) {
+        case 1: {
+          playerOneDeckCounter--
+          player1DeckCell.innerHTML = playerOneDeckCounter
+          break
+        }
+        case 2: {
+          playerTwoDeckCounter--
+          player2DeckCell.innerHTML = playerTwoDeckCounter
+          break
+        }
+        case 3: {
+          playerThreeDeckCounter--
+          player3DeckCell.innerHTML = playerThreeDeckCounter
+          break
+        }
+        case 4: {
+          playerFourDeckCounter--
+          player4DeckCell.innerHTML = playerFourDeckCounter
+          break
+        }
+      }
       missCellsAfterShipKilling(playerCells, shipToCheck)
     } else {
+      switch (shipToCheck.doubleCoordinates.length) {
+        case 1: {
+          computerOneDeckCounter--
+          computer1DeckCell.innerHTML = computerOneDeckCounter
+          break
+        }
+        case 2: {
+          computerTwoDeckCounter--
+          computer2DeckCell.innerHTML = computerTwoDeckCounter
+          break
+        }
+        case 3: {
+          computerThreeDeckCounter--
+          computer3DeckCell.innerHTML = computerThreeDeckCounter
+          break
+        }
+        case 4: {
+          computerFourDeckCounter--
+          computer4DeckCell.innerHTML = computerFourDeckCounter
+          break
+        }
+      }
       missCellsAfterShipKilling(computerCells, shipToCheck)
     }
   }
@@ -348,7 +415,6 @@ killShipCheck = function (table, coord) {
 
 arrMissing = function (table, arr) {
   for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i])
     if (table[arr[i]].innerHTML === '') {
       createMissCell(table[arr[i]])
     }
@@ -418,7 +484,6 @@ missCellsAfterShipKilling = function (table, shipToCheck) {
       (shipToCheck.doubleCoordinates[i] + 1 % 10) !== 0 &&
       shipToCheck.doubleCoordinates[i] > 10 &&
       shipToCheck.doubleCoordinates[i] < 89) {
-        console.log(shipToCheck.doubleCoordinates[i])
     arr.push(shipToCheck.doubleCoordinates[i] - 1,
       shipToCheck.doubleCoordinates[i] + 1,
       shipToCheck.doubleCoordinates[i] - 10,
