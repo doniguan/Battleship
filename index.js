@@ -527,12 +527,12 @@ randomNum = function (max) {
 winnerChk = function () {
   if (playerFourDeckCounter === 0 && playerThreeDeckCounter === 0 && playerTwoDeckCounter === 0 && playerOneDeckCounter === 0) {
     resultMessage.innerHTML = 'You lost.'
-    resultMessage.style.color = 'green'
+    resultMessage.style.color = 'red'
     winShowing()
   }
   if (computerFourDeckCounter === 0 && computerThreeDeckCounter === 0 && computerTwoDeckCounter === 0 && computerOneDeckCounter === 0) {
     resultMessage.innerHTML = 'You won!'
-    resultMessage.style.color = 'red'
+    resultMessage.style.color = 'green'
     winShowing()
   }
 }
