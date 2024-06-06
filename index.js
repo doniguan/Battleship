@@ -1,3 +1,8 @@
+// miss клетки на краю поля
+// неправильное кол-во кораблей
+// визуал
+// повторная игра
+
 let playerCells = []
 let computerCells = []
 let computerCoordinates = []
