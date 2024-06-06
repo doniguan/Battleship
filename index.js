@@ -11,6 +11,7 @@ let playerShipsList = []
 let computerShipsList = []
 
 let resultMessage
+let againMessage
 
 class Ship {
   size
@@ -62,6 +63,7 @@ onload = function () {
   computer1DeckCell = document.getElementById('computer1Deck')
 
   resultMessage = this.document.getElementById('win_message')
+  againMessage = this.document.getElementById('again_message')
 
   const random = randomNum(1)
   if (random === 1) {
@@ -545,6 +547,8 @@ winnerChk = function () {
 
 winShowing = function () {
   resultMessage.style.display = 'block'
+  winMessage.style.display = 'block'
+  console.log(againMessage)
   for (let i = 0; i < computerCells.length; i++) {
     computerCells[i].removeEventListener('click', function () {
       humanMove(this, i)

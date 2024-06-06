@@ -98,6 +98,13 @@ table {
     border-color: transparent;
 }
 
+#again_message {
+    display: none;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 40px;
+}
+
 #field {
     position: relative;
 }
