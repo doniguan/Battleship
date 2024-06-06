@@ -506,6 +506,7 @@ missCellsAfterShipKilling = function (table, shipToCheck) {
 createShipCell = function (table, coordinates, i) {
   table[coordinates[i]].innerHTML = shipIcon
   table[coordinates[i]].style.outline = '3px dotted'
+  table[coordinates[i]].style.backgroundColor = '#757575'
 }
 
 createHitCell = function (table, item, coord) {

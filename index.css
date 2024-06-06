@@ -24,6 +24,7 @@ h2 {
     border: 1px solid #333;
     outline: 1px solid #333;
     cursor: pointer;
+    background-color:rgb(143, 174, 206);
 }
 
 .computerCell {
@@ -37,6 +38,7 @@ h2 {
     border: 1px solid #333;
     outline: 1px solid #333;
     cursor: pointer;
+    background-color:rgb(143, 174, 206);
 }
 
 .letterCell {
